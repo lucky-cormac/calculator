@@ -16,9 +16,12 @@ export default class App extends React.Component {
   };
 
   render() {
+    const { next, total } = this.state;
+    const value = next || total || "0";
+
     return (
       <div className="component-app">
-        <Display value={this.state.next || this.state.total || "0"} />
+        <Display value={value} />
         <ButtonPanel clickHandler={this.handleClick} />
       </div>
     );

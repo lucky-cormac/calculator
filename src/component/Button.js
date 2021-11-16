@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import "./Button.css";
 
 export default class Button extends React.Component {
@@ -11,19 +12,17 @@ export default class Button extends React.Component {
   };
 
   handleClick = () => {
-    this.props.clickHandler(this.props.name);
+    const { name, clickHandler } = this.props;
+    clickHandler(name);
   };
 
   render() {
-    const className = [
-      "component-button",
-      this.props.orange ? "orange" : "",
-      this.props.wide ? "wide" : "",
-    ];
+    const { name, wide, orange } = this.props;
+    const className = classNames("component-button", { wide, orange });
 
     return (
-      <div className={className.join(" ").trim()}>
-        <button onClick={this.handleClick}>{this.props.name}</button>
+      <div className={className}>
+        <button onClick={this.handleClick}>{name}</button>
       </div>
     );
   }
